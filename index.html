@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Untuk Kamu yang Paling Gemesin! 💕</title>
-    <!-- Menghubungkan ke file CSS eksternal -->
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Audio Lagu Latar Belakang -->
     <audio id="musikLatar" loop src="musik.mp3"></audio>
 
     <div id="bubbleNgeledek">Gak bisa wlee! 😜</div>
 
-    <!-- Struktur Wadah Loading Bar Kotak Panjang -->
     <div id="loadingLayerOverlay">
         <div class="loading-title">Memuat kebahagiaan... <span style="animation: pulse 0.8s infinite;">💖</span></div>
         <div class="kotak-loading-luar">
@@ -22,10 +20,8 @@
         </div>
     </div>
 
-    <!-- Wadah untuk Efek Love Titik-Titik -->
     <div id="loveLoadingOverlay"></div>
 
-    <!-- LAYER 1 -->
     <section id="halaman1">
         <div class="container">
             <div class="wrapper-foto-berjalan">
@@ -54,7 +50,6 @@
         </div>
     </section>
 
-    <!-- LAYER 2 -->
     <section id="halaman2">
         <div class="container">
             <h1>Kotak Emot Emosi 🌸🌈</h1>
@@ -74,17 +69,10 @@
         </div>
     </section>
 
-    <!-- LAYER 3 -->
     <section id="halaman3">
         <div class="container" id="kotakFinal">
-            <div class="frame-foto-akhir">
-                <img src="foto_animasi.gif" class="foto-gif-akhir" alt="Lucu">
-            </div>
-
-            <h1>Pertanyaan Serius! 🙈👉👈</h1>
-            <p style="font-size: 1.1rem; font-weight: bold; color: #ff1493; margin-bottom: 15px;">
-                Kamu mauuu gaaa jadi pacarku? ❤️
-            </p>
+            <h1 class="judul-pertanyaan">Pertanyaan Serious! <span class="emot-kecil">🙈👉👈</span></h1>
+            <p class="teks-pertanyaan">Kamu mauuu gaaa jadi pacarku? ❤️</p>
             
             <div class="wrapper-tombol">
                 <button class="btn-pilihan btn-mau" onclick="pemicuEfekLove()">MAUUU! 💖</button>
@@ -93,7 +81,6 @@
         </div>
     </section>
 
-    <!-- Menghubungkan ke file JavaScript eksternal -->
     <script src="script.js"></script>
 </body>
 </html>
