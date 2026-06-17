@@ -1,2 +1,100 @@
-# untukkamumutiara
-Love
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Kamu yang Paling Gemesin! 💕</ttitle
+    
+</head>
+<body>
+
+    <!-- Audio Lagu Latar Belakang -->
+    <audio id="musikLatar" loop src="musik.mp3"></audio>
+
+    <div id="bubbleNgeledek">Gak bisa wlee! 😜</div>
+
+    <!-- BARU: Struktur Wadah Loading Bar Kotak Panjang -->
+    <div id="loadingLayerOverlay">
+        <div class="loading-title">Memuat kebahagiaan... <span style="animation: pulse 0.8s infinite;">💖</span></div>
+        <div class="kotak-loading-luar">
+            <div class="bar-loading-isi" id="isiBarLoading"></div>
+        </div>
+    </div>
+
+    <!-- Wadah untuk Efek Love Titik-Titik -->
+    <div id="loveLoadingOverlay"></div>
+
+    <!-- LAYER 1 -->
+    <section id="halaman1">
+        <div class="container">
+            <div class="wrapper-foto-berjalan">
+                <div class="jalur-foto">
+                    <img src="foto1.jpg" class="foto-kecil" alt="1">
+                    <img src="foto2.jpg" class="foto-kecil" alt="2">
+                    <img src="foto3.jpg" class="foto-kecil" alt="3">
+                    <img src="foto4.jpg" class="foto-kecil" alt="4">
+                    <img src="foto5.jpg" class="foto-kecil" alt="5">
+                    <img src="foto6.jpg" class="foto-kecil" alt="6">
+                    <img src="foto1.jpg" class="foto-kecil" alt="1">
+                    <img src="foto2.jpg" class="foto-kecil" alt="2">
+                    <img src="foto3.jpg" class="foto-kecil" alt="3">
+                    <img src="foto4.jpg" class="foto-kecil" alt="4">
+                    <img src="foto5.jpg" class="foto-kecil" alt="5">
+                    <img src="foto6.jpg" class="foto-kecil" alt="6">
+                </div>
+            </div>
+
+            <h1>Halo Cantik! ✨🎀</h1>
+            <p>Aku punya ruang rahasia penuh kejutan yang dibuat khusus buat kamu. Coba intip ke bawah yuk! 👇</p>
+            
+            <div class="countdown-box" id="waktuMemendam">Loading waktu...</div>
+            <br>
+            <button class="btn-scroll" onclick="mulaiPetualangan('halaman2')">Buka Kejutan! ↓</button>
+        </div>
+    </section>
+
+    <!-- LAYER 2 -->
+    <section id="halaman2">
+        <div class="container">
+            <h1>Kotak Emot Emosi 🌸🌈</h1>
+            <p>Klik kotak-kotak lucu ini buat cari tahu apa yang mau aku sampein ke kamu!</p>
+            
+            <!-- Tabel Sekarang Ber-Shadow Tebal Cantik -->
+            <table class="tabel-emot">
+                <tr><td onclick="ketikPesan('🥰', 'Kalau kamu itu sebuah lagu, kamu pasti lagu favorit yang mau aku putar terus tiap hari!')">🥰</td></tr>
+                <tr><td onclick="ketikPesan('🐣', 'Tau gak? Semesta itu luas banget, tapi lucunya pusat duniaku cuma ada di kamu.')">🐣</td></tr>
+                <tr><td onclick="ketikPesan('🧸', 'Hari-hariku tuh sebenernya biasa aja, tapi kalau ada kamu mendadak jadi luar biasa gembira!')">🧸</td></tr>
+                <tr><td onclick="ketikPesan('💖', 'Bisa gak stop jadi orang paling manis? Jantung aku capek tau marathon terus tiap liat kamu.')">💖</td></tr>
+                <tr><td onclick="ketikPesan('✨', 'Kamu itu definisi nyata dari kata indah. Makasih ya udah hadir di bumi!')">✨</td></tr>
+            </table>
+
+            <div id="pesanRomantis"></div>
+            <br>
+            <button class="btn-scroll" onclick="jalankanTransisiLoading('halaman2', 'halaman3')">Udah siap ke halaman utama? 👇</button>
+        </div>
+    </section>
+
+    <!-- LAYER 3 (Pertanyaan Serius + Foto Gerak Goyang Animasi Lucu) -->
+    <section id="halaman3">
+        <div class="container" id="kotakFinal">
+            
+            <!-- BARU: Polaroid Foto Bergerak Lucu agar Atas Tidak Kosong -->
+            <div class="frame-foto-akhir">
+                <img src="foto_animasi.gif" class="foto-gif-akhir" alt="Lucu">
+            </div>
+
+            <h1>Pertanyaan Serius! 🙈👉👈</h1>
+            <p style="font-size: 1.1rem; font-weight: bold; color: #ff1493; margin-bottom: 15px;">
+                Kamu mauuu gaaa jadi pacarku? ❤️
+            </p>
+            
+            <div class="wrapper-tombol">
+                <button class="btn-pilihan btn-mau" onclick="pemicuEfekLove()">MAUUU! 💖</button>
+                <button class="btn-pilihan btn-ga" id="btnGa" onmouseover="hindariTombol()" onclick="hindariTombol()">Nggak 😜</button>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>
