@@ -1,423 +1,286 @@
 /* Mengunci scroll manual agar tidak bisa digeser sembarangan */
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden; 
-            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
-            color: #ff69b4;
-        }
-
-        /* Efek Hujan Emoji */
-        .heart-drop {
-            position: fixed;
-            top: -10%;
-            font-size: 14px; 
-            animation: fall linear forwards;
-            z-index: 999;
-            pointer-events: none;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(110vh) rotate(360deg);
-            }
-        }
-
-        /* Setiap halaman/layer berdiri sendiri pas satu layar penuh */
-        section {
-            height: 100vh;
-            width: 100%;
-            display: none; /* Diatur lewat JS untuk transisi loading */
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
-            position: relative;
-        }
-
-        #halaman1 {
-            display: flex; /* Halaman pertama langsung muncul */
-        }
-
-        .container {
-            background-color: rgba(255, 255, 255, 0.93);
-            padding: 25px;
-            border-radius: 30px;
-            box-shadow: 0 15px 30px rgba(255, 105, 180, 0.25);
-            border: 4px dashed #ffb6c1;
-            text-align: center;
-            max-width: 420px;
-            width: 85%;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        /* Slider Foto Berjalan Otomatis (Marquee) */
-        .wrapper-foto-berjalan {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-            margin-bottom: 15px;
-            padding: 5px 0;
-            border-bottom: 2px dashed #ffe4e1;
-        }
-
-        .jalur-foto {
-            display: inline-block;
-            animation: jalanTerus 12s linear infinite;
-        }
-
-        .foto-kecil {
-            width: 70px;
-            height: 70px;
-            object-fit: cover;
-            border-radius: 15px;
-            border: 3px solid white;
-            box-shadow: 0 4px 8px rgba(255, 105, 180, 0.2);
-            margin: 0 6px;
-            display: inline-block;
-        }
-
-        @keyframes jalanTerus {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* Teks Countdown Kecil Gendut */
-        .countdown-box {
-            font-size: 0.85rem;
-            color: #db7093;
-            background-color: #fff0f5;
-            padding: 5px 10px;
-            border-radius: 10px;
-            display: inline-block;
-            margin-top: 5px;
-            font-weight: bold;
-            border: 1px dashed #ffb6c1;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        h1 {
-            font-size: 1.8rem;
-            text-shadow: 2px 2px #ffe4e1;
-            margin-bottom: 10px;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-
-        p {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.4;
-            margin-top: 5px;
-        }
-
-        .btn-scroll {
-            background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 100%);
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            font-size: 1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 4px 0 #db7093;
-            transition: all 0.2s ease;
-            margin-top: 15px;
-        }
-
-        .btn-scroll:active {
-            transform: translateY(4px);
-            box-shadow: 0 0px 0 #db7093;
-        }
-
-        /* BARU: Tabel Emot dengan Efek Shadow Timbul & Estetik */
-        .tabel-emot {
-            width: 100%;
-            margin-top: 15px;
-            background-color: #fff9fa;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 3px solid #ffb6c1;
-            box-shadow: 0 10px 20px rgba(255, 105, 180, 0.2), inset 0 4px 10px rgba(255, 182, 193, 0.3);
-            border-collapse: separate;
-            border-spacing: 0;
-        }
-
-        .tabel-emot td {
-            border-bottom: 2px solid #ffe4e1;
-            padding: 10px;
-            font-size: 2.2rem; 
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .tabel-emot tr:last-child td {
-            border-bottom: none;
-        }
-
-        .tabel-emot td:hover {
-            background-color: #ffe4e1;
-            transform: scale(1.1) rotate(3deg);
-            text-shadow: 0 5px 10px rgba(255, 105, 180, 0.4);
-        }
-
-        #pesanRomantis {
-            margin-top: 15px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #ff1493;
-            min-height: 50px;
-            padding: 12px;
-            border-radius: 15px;
-            background-color: #fff0f5;
-            display: none;
-            border: 2px dashed #ff69b4;
-            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.1);
-        }
-
-        /* BARU: Bingkai Foto Bergerak Goyang (Halaman Akhir) */
-        .frame-foto-akhir {
-            background: white;
-            padding: 10px;
-            padding-bottom: 15px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
-            margin-bottom: 15px;
-            display: inline-block;
-            transform-origin: top center;
-            animation: goyangLucu 3s ease-in-out infinite alternate;
-        }
-
-        .foto-gif-akhir {
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 10px;
-            border: 2px solid #ffe4e1;
-        }
-
-        @keyframes goyangLucu {
-            0% { transform: rotate(-5deg); }
-            100% { transform: rotate(5deg); }
-        }
-
-        /* Area Tombol Pilihan di Halaman Akhir */
-        .wrapper-tombol {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin-top: 15px;
-            position: relative;
-            min-height: 60px;
-        }
-
-        .btn-pilihan {
-            font-size: 1.1rem;
-            padding: 12px 25px;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.1s ease;
-        }
-
-        .btn-mau {
-            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
-            color: white;
-            box-shadow: 0 5px 0 #c71585;
-        }
-
-        .btn-mau:hover {
-            transform: scale(1.1);
-        }
-
-        .btn-ga {
-            background-color: #eee;
-            color: #555;
-            box-shadow: 0 5px 0 #ccc;
-            width: auto; 
-            white-space: nowrap;
-            position: relative;
-            z-index: 1000;
-        }
-
-        /* Desain Form WhatsApp Berwarna Pink & Putih Lucu */
-        .form-wa {
-            text-align: left;
-            margin-top: 15px;
-        }
-
-        .form-wa label {
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #ff1493;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .form-wa textarea, .form-wa input {
-            width: 100%;
-            padding: 12px;
-            border-radius: 15px;
-            border: 2px solid #ffb6c1;
-            background-color: #fffafb; 
-            color: #ff1493; 
-            font-family: inherit;
-            font-size: 0.9rem;
-            font-weight: bold;
-            box-sizing: border-box;
-            margin-bottom: 12px;
-            outline: none;
-            box-shadow: inset 0 2px 4px rgba(255, 182, 193, 0.2);
-            transition: all 0.3s;
-        }
-
-        .form-wa textarea:focus, .form-wa input:focus {
-            border-color: #ff1493;
-            background-color: #ffffff;
-            box-shadow: 0 0 8px rgba(255, 20, 147, 0.2);
-        }
-
-        .btn-kirim-wa {
-            background-color: #25d366; 
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 12px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 0 #128c7e;
-            transition: all 0.2s;
-            margin-top: 5px;
-        }
-
-        .btn-kirim-wa:active {
-            transform: translateY(4px);
-            box-shadow: 0 0px 0 #128c7e;
-        }
-
-        #bubbleNgeledek {
-            position: absolute;
-            background: #ff1493;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            display: none;
-            pointer-events: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            z-index: 1001;
-        }
-
-        #bubbleNgeledek::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-width: 6px 6px 0;
-            border-style: solid;
-            border-color: #ff1493 transparent;
-            display: block;
-            width: 0;
-        }
-
-        /* BARU: Desain Efek Loading Bar Kotak Panjang Pink Putih */
-        #loadingLayerOverlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #fff0f5;
-            z-index: 99999;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .loading-title {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #ff69b4;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .kotak-loading-luar {
-            width: 70%;
-            max-width: 280px;
-            height: 24px;
-            background-color: #ffffff;
-            border: 3px solid #ffb6c1;
-            border-radius: 30px;
-            padding: 3px;
-            box-sizing: border-box;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.15);
-        }
-
-        .bar-loading-isi {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #ffb6c1, #ff1493);
-            border-radius: 20px;
-            transition: width 1.5s linear;
-        }
-
-        /* Overlay Love Titik-Titik Pop-up */
-        #loveLoadingOverlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(255, 240, 245, 0.95);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-        }
-
-        .love-titik {
-            font-size: 24px;
-            color: #ff1493;
-            position: absolute;
-            animation: mekarLuas 1.8s ease-out forwards;
-        }
-
-        @keyframes mekarLuas {
-            0% { transform: translate(0, 0) scale(0.3); opacity: 1; }
-            100% { transform: translate(var(--x), var(--y)) scale(1.2); opacity: 0; }
-        }
-
-        .text-tambahan {
-            font-size: 0.95rem;
-            font-weight: bold;
-            color: #ff1493;
-            margin-top: 18px;
-            text-align: center;
-            line-height: 1.4;
-            animation: bounceKecil 2s infinite;
-        }
-
-        @keyframes bounceKecil {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
+    color: #ff69b4;
 }
+
+/* Efek Hujan Emoji Utama */
+.heart-drop {
+    position: fixed;
+    top: -10%;
+    font-size: 14px; 
+    animation: fall linear forwards;
+    z-index: 999;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); }
+}
+
+section {
+    height: 100vh;
+    width: 100%;
+    display: none; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#halaman1 { display: flex; }
+
+.container {
+    background-color: rgba(255, 255, 255, 0.93);
+    padding: 25px;
+    border-radius: 30px;
+    box-shadow: 0 15px 30px rgba(255, 105, 180, 0.25);
+    border: 4px dashed #ffb6c1;
+    text-align: center;
+    max-width: 420px;
+    width: 85%;
+    animation: float 3s ease-in-out infinite;
+    z-index: 10;
+}
+
+/* Slider Foto Atas */
+.wrapper-foto-berjalan {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 15px;
+    padding: 5px 0;
+    border-bottom: 2px dashed #ffe4e1;
+}
+
+.jalur-foto {
+    display: inline-block;
+    animation: jalanTerus 12s linear infinite;
+}
+
+.foto-kecil {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid white;
+    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.2);
+    margin: 0 6px;
+    display: inline-block;
+}
+
+@keyframes jalanTerus {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+.countdown-box {
+    font-size: 0.85rem;
+    color: #db7093;
+    background-color: #fff0f5;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 5px;
+    font-weight: bold;
+    border: 1px dashed #ffb6c1;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+h1 {
+    font-size: 1.8rem;
+    text-shadow: 2px 2px #ffe4e1;
+    margin-bottom: 10px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-top: 5px;
+}
+
+.btn-scroll {
+    background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 100%);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 0 #db7093;
+    transition: all 0.2s ease;
+    margin-top: 15px;
+}
+
+.btn-scroll:active {
+    transform: translateY(4px);
+    box-shadow: 0 0px 0 #db7093;
+}
+
+/* Tabel Emot */
+.tabel-emot {
+    width: 100%;
+    margin-top: 15px;
+    background-color: #fff9fa;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 3px solid #ffb6c1;
+    box-shadow: 0 10px 20px rgba(255, 105, 180, 0.2), inset 0 4px 10px rgba(255, 182, 193, 0.3);
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.tabel-emot td {
+    border-bottom: 2px solid #ffe4e1;
+    padding: 10px;
+    font-size: 2.2rem; 
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tabel-emot td:hover {
+    background-color: #ffe4e1;
+    transform: scale(1.1) rotate(3deg);
+}
+
+#pesanRomantis {
+    margin-top: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ff1493;
+    min-height: 50px;
+    padding: 12px;
+    border-radius: 15px;
+    background-color: #fff0f5;
+    display: none;
+    border: 2px dashed #ff69b4;
+}
+
+/* HALAMAN 3 DEKORASI AURA & UKURAN TEKS KECIL */
+.emot-kecil { font-size: 1.3rem; display: inline-block; margin-left: 3px; }
+.judul-pertanyaan { font-size: 1.4rem; margin-bottom: 8px; }
+.teks-pertanyaan { font-size: 0.95rem !important; font-weight: bold; color: #ff1493; margin-bottom: 20px; }
+
+#halaman3::before {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(255,182,193,0.4) 0%, rgba(255,240,245,0) 70%);
+    border-radius: 50%;
+    z-index: 1;
+    animation: pulseAura 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseAura {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    100% { transform: scale(1.2); opacity: 1; }
+}
+
+.partikel-aura {
+    position: absolute;
+    background: rgba(255, 105, 180, 0.25);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: layangAura 6s linear infinite;
+    z-index: 2;
+}
+
+@keyframes layangAura {
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+
+/* FOTO BULAT AKHIR (MENGAYUN + DENYUT GLOWING AURA) */
+.wrapper-foto-berputar {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 15px;
+    padding: 8px 0;
+    border-bottom: 2px dashed #ffb6c1;
+}
+
+.jalur-foto-putar {
+    display: inline-block;
+    animation: jalanTerus 14s linear infinite;
+}
+
+.foto-bulat-putar {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    margin: 0 8px;
+    display: inline-block;
+    animation: ayunFoto 3s ease-in-out infinite alternate, glowingAura 2s ease-in-out infinite alternate;
+}
+
+.foto-bulat-putar:nth-child(even) { animation-delay: 0.5s, 1s; }
+
+@keyframes ayunFoto {
+    0% { transform: rotate(-6deg); }
+    100% { transform: rotate(6deg); }
+}
+
+@keyframes glowingAura {
+    0% { box-shadow: 0 2px 5px rgba(255, 105, 180, 0.3); border-color: #ffffff; }
+    100% { box-shadow: 0 0 15px rgba(255, 20, 147, 0.6); border-color: #ffb6c1; }
+}
+
+/* Tombol-Tombol */
+.wrapper-tombol { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 15px; position: relative; min-height: 60px; }
+.btn-pilihan { font-size: 1.1rem; padding: 12px 25px; border-radius: 50px; border: none; cursor: pointer; font-weight: bold; transition: all 0.1s ease; }
+.btn-mau { background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%); color: white; box-shadow: 0 5px 0 #c71585; }
+.btn-mau:hover { transform: scale(1.1); }
+.btn-ga { background-color: #eee; color: #555; box-shadow: 0 5px 0 #ccc; position: relative; z-index: 1000; }
+
+/* Desain Form WA */
+.form-wa { text-align: left; margin-top: 15px; }
+.form-wa label { font-size: 0.9rem; font-weight: bold; color: #ff1493; display: block; margin-bottom: 5px; }
+.form-wa textarea, .form-wa input { width: 100%; padding: 12px; border-radius: 15px; border: 2px solid #ffb6c1; background-color: #fffafb; color: #ff1493; font-family: inherit; font-size: 0.9rem; font-weight: bold; box-sizing: border-box; margin-bottom: 12px; outline: none; }
+.form-wa textarea:focus, .form-wa input:focus { border-color: #ff1493; background-color: #ffffff; }
+.btn-kirim-wa { background-color: #25d366; color: white; border: none; width: 100%; padding: 12px; font-size: 1rem; font-weight: bold; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 0 #128c7e; transition: all 0.2s; }
+.btn-kirim-wa:active { transform: translateY(4px); box-shadow: 0 0px 0 #128c7e; }
+
+#bubbleNgeledek { position: absolute; background: #ff1493; color: white; padding: 6px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: bold; display: none; pointer-events: none; z-index: 1001; }
+#bubbleNgeledek::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); border-width: 6px 6px 0; border-style: solid; border-color: #ff1493 transparent; }
+
+/* Overlay & Animasi Pop Up */
+#loadingLayerOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #fff0f5; z-index: 99999; display: none; flex-direction: column; justify-content: center; align-items: center; }
+.loading-title { font-size: 1.1rem; font-weight: bold; color: #ff69b4; margin-bottom: 15px; display: flex; align-items: center; gap: 5px; }
+.kotak-loading-luar { width: 70%; max-width: 280px; height: 24px; background-color: #ffffff; border: 3px solid #ffb6c1; border-radius: 30px; padding: 3px; box-sizing: border-box; overflow: hidden; }
+.bar-loading-isi { width: 0%; height: 100%; background: linear-gradient(90deg, #ffb6c1, #ff1493); border-radius: 20px; transition: width 1.5s linear; }
+
+#loveLoadingOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 240, 245, 0.95); z-index: 999; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+.love-titik { font-size: 24px; color: #ff1493; position: absolute; animation: mekarLuas 1.8s ease-out forwards; }
+
+@keyframes mekarLuas {
+    0% { transform: translate(0, 0) scale(0.3); opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)) scale(1.2); opacity: 0; }
+}
+.text-tambahan { font-size: 0.95rem; font-weight: bold; color: #ff1493; margin-top: 18px; text-align: center; animation: bounceKecil 2s infinite; }
+@keyframes bounceKecil { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
