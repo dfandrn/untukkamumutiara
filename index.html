@@ -75,9 +75,35 @@
             <p class="teks-pertanyaan">Kamu mauuu gaaa jadi pacarku? ❤️</p>
             
             <div class="wrapper-tombol">
-                <button class="btn-pilihan btn-mau" onclick="pemicuEfekLove()">MAUUU! 💖</button>
+                <button class="btn-pilihan btn-mau" onclick="pemicuEfekLove(); setTimeout(() => { jalankanTransisiLoading('halaman3', 'halaman4') }, 2000)">MAUUU! 💖</button>
                 <button class="btn-pilihan btn-ga" id="btnGa" onmouseover="hindariTombol()" onclick="hindariTombol()">Nggak 😜</button>
             </div>
+        </div>
+    </section>
+
+    <section id="halaman4">
+        <div class="container">
+            <div class="wrapper-foto-berputar">
+                <div class="jalur-foto-putar">
+                    <img src="https://cdn.jsdelivr.net/gh/dfandrn/Cokelat@main/IMG-20260614-WA0099.jpg" class="foto-bulat-putar" alt="Mutiara">
+                    <img src="https://cdn.jsdelivr.net/gh/dfandrn/Cokelat@main/IMG-20260614-WA0099.jpg" class="foto-bulat-putar" alt="Mutiara">
+                    <img src="https://cdn.jsdelivr.net/gh/dfandrn/Cokelat@main/IMG-20260614-WA0099.jpg" class="foto-bulat-putar" alt="Mutiara">
+                    <img src="https://cdn.jsdelivr.net/gh/dfandrn/Cokelat@main/IMG-20260614-WA0099.jpg" class="foto-bulat-putar" alt="Mutiara">
+                    <img src="https://cdn.jsdelivr.net/gh/dfandrn/Cokelat@main/IMG-20260614-WA0099.jpg" class="foto-bulat-putar" alt="Mutiara">
+                    <img src="https://cdn.jsdelivr.net/gh/dfandrn/Cokelat@main/IMG-20260614-WA0099.jpg" class="foto-bulat-putar" alt="Mutiara">
+                </div>
+            </div>
+            <h1 style="font-size: 1.8rem; margin-bottom:5px;">YEEAYY RESMI! 💖🥳</h1>
+            <p style="font-size: 0.9rem; margin-bottom: 15px; font-weight: bold; color: #ff1493;">Isi ini dulu yuk buat dikirim ke WA aku! 👇</p>
+            
+            <div class="form-wa">
+                <label>Gimana perasaan kamu sekarang? 🥰</label>
+                <textarea id="perasaan" rows="2" placeholder="Contoh: Bahagia bangeeet..."></textarea>
+                <label>Nanti kita first date ke mana? 🍰🍿</label>
+                <input type="text" id="tempatDate" placeholder="Tulis tempat date impian... ">
+                <button class="btn-kirim-wa" onclick="kirimKeWhatsApp()">Kirim ke WA Aku! 📲</button>
+            </div>
+            <div class="text-tambahan">bungaanyaaa sama barangnya nanti yaaaa 🌸🎁</div>
         </div>
     </section>
 
