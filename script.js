@@ -101,11 +101,11 @@ function updateCountdown() {
 }
 
 const kataNgeledek = [
-    "Gak bisa wlee! 😜",
-    "Eits, mau mencet apa hayo? 😝",
+    "oh gamau",
+    "cukup tau sih aku mutt",
     "Tombolnya dikunci khusus buat kamu! 🔒",
-    "Yah kesasar tangannya ya? 🤣",
-    "Coba lagi sampai tahun depan! 🤪"
+    "yaudaaaaa deh, ini ke simpen loh aku tau 😒",
+    "HADUH 😟"
 ];
 
 function hindariTombol() {
@@ -181,7 +181,7 @@ function terimaCinta() {
             <h1 style="font-size: 1.8rem; margin-bottom:5px;">YEEAYY RESMI! 💖🥳</h1>
             <p style="font-size: 0.9rem; margin-bottom: 15px; font-weight: bold; color: #ff1493;">Isi ini dulu yuk buat dikirim ke WA aku! 👇</p>
             <div class="form-wa">
-                <label>Gimana perasaan kamu sekarang? 🥰</label>
+                <label>Gimana perasaan kamu sekarang? 🩷</label>
                 <textarea id="perasaan" rows="2" placeholder="Contoh: Bahagia bangeeet..."></textarea>
                 <label>Nanti kita first date ke mana? 🍰🍿</label>
                 <input type="text" id="tempatDate" placeholder="Tulis tempat date impian... ">
@@ -201,7 +201,7 @@ function kirimKeWhatsApp() {
         return;
     }
     const teksPesan = "Halo! ✨ Incaran masa depanmu sudah mengisi form jadian nih:" + "%0A%0A" +
-                      "1. Perasaanku saat ini: \"" + perasaan + "\" 🥰" + "%0A" +
+                      "1. Perasaanku saat ini: \"" + perasaan + "\" 🩷" + "%0A" +
                       "2. Tempat date yang aku pengen: \"" + tempatDate + "\" 🗺️" + "%0A%0A" +
                       "Yeayyy sekarang kita pacaran! Jangan lupa jemput aku ya! 💖✨";
     window.location.href = "https://wa.me/" + NOMOR_WA_KAMU + "?text=" + encodeURIComponent(teksPesan);
