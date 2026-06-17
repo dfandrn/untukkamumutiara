@@ -187,7 +187,7 @@ function terimaCinta() {
                 <input type="text" id="tempatDate" placeholder="Tulis tempat date impian... ">
                 <button class="btn-kirim-wa" onclick="kirimKeWhatsApp()">Kirim ke WA Aku! 📲</button>
             </div>
-            <div class="text-tambahan">bungaanyaaa sama barangnya nanti yaaaa 🌸🎁</div>
+            <div class="text-tambahan">bungaanyaaa sama barangnya nanti nyusul yaa😭</div>
         </div>
     `;
     for(let i=0; i<40; i++) { setTimeout(createHeart, i * 80); }
